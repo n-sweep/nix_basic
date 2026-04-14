@@ -1,4 +1,4 @@
-{ flake.modules.nixos.disko-hetzner = { ... }: {
+{ flake.modules.nixos.disko-base = { ... }: {
 
   disko.devices.disk.main = {
 

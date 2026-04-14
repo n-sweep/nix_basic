@@ -7,9 +7,10 @@
     i18n.defaultLocale = "en_US.UTF-8";
 
     networking.hostName = hostname;
-    networking.useDHCP = true;
 
     security.sudo.wheelNeedsPassword = false;
+
+    hardware.facter.detected.dhcp.enable = false;
 
   };
 }
