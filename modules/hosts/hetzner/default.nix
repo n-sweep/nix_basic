@@ -7,7 +7,6 @@ let
   systemStateVersion = "24.11";
 in {
   flake.nixosConfigurations.${hostname} = inputs.nixpkgs.lib.nixosSystem {
-    inherit system;
     specialArgs = { inherit hostname username; };
     modules = with self.modules.nixos; [
       inputs.disko.nixosModules.disko
@@ -20,6 +19,7 @@ in {
 
       {
         hardware.facter.reportPath = ./facter.json;
+        nixpkgs.hostPlatform.system = system;
         system.stateVersion = systemStateVersion;
       }
 
@@ -29,8 +29,11 @@ in {
   # flake.homeConfigurations."${addr}"= inputs.home-manager.lib.homeManagerConfiguration {
   #   pkgs = inputs.nixpkgs.legacyPackages.${system};
   #
-  #   # strip out `self` to avoid infinite recursion
-  #   extraSpecialArgs = { inputs = builtins.removeAttrs inputs [ "self" ]; };
+  #   extraSpecialArgs = {
+  #     inherit username hostname;
+  #     # strip out `self` to avoid infinite recursion
+  #     inputs = builtins.removeAttrs inputs [ "self" ];
+  #   };
   #
   #   modules = with self.modules.homeManager; [
   #
