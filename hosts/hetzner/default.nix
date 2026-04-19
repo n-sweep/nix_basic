@@ -41,7 +41,7 @@ in {
         home.username = username;
         home.homeDirectory = "/home/${username}";
         home.packages = [
-          inputs.nixvim.packages.${system}.default
+          # inputs.nixvim.packages.${system}.default
         ];
 
         # This value determines the home Manager release that your

@@ -10,6 +10,5 @@
 
     security.sudo.wheelNeedsPassword = false;
 
-
   };
 }
