@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.base = { hostname, ... }: {
+  flake.modules.nixos.core = { hostname, ... }: {
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -10,7 +10,6 @@
 
     security.sudo.wheelNeedsPassword = false;
 
-    hardware.facter.detected.dhcp.enable = false;
 
   };
 }
